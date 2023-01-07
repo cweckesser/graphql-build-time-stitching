@@ -1,0 +1,7 @@
+dist/
+generated/
+graphql/
+node_modules/
+
+*.graphql
+*.yml

@@ -1,0 +1,14 @@
+{
+	"entryFile": "./src/index.ts",
+	"noImplicitAdditionalProperties": "throw-on-extras",
+	"controllerPathGlobs": ["src/**/*Controller.ts"],
+	"spec": {
+		"outputDirectory": "src/generated",
+		"specVersion": 3,
+		"specFileBaseName": "swagger",
+		"yaml": false
+	},
+	"routes": {
+		"routesDir": "src/generated"
+	}
+}

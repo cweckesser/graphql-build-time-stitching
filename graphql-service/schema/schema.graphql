@@ -1,0 +1,30 @@
+scalar DateTime
+
+type Person {
+	id: ID!
+	firstName: String!
+	lastName: String!
+	email: String!
+	dateOfBirth: DateTime!
+	addresses: [Address!]
+}
+
+enum AddressType {
+	HOME
+	WORK
+}
+
+type Address {
+	id: ID!
+	type: AddressType!
+	street: String!
+	number: String!
+	apartment: String
+	city: String!
+	state: String!
+	zipCode: String!
+}
+
+type Query {
+	people: [Person!]
+}

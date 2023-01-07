@@ -1,0 +1,35 @@
+{
+	"name": "graphql-api",
+	"version": "0.0.1",
+	"description": "Node.js application serving an GraphQL service",
+	"license": "ISC",
+	"main": "dist/index.js",
+	"scripts": {
+		"dependencies:cleanup": "rimraf node_modules || rm -rf node_modules",
+		"building:cleanup": "rimraf dist || rm -rf dist",
+		"generated:cleanup": "rimraf src/generated || rm -rf src/generated",
+		"cleanup": "run-p dependencies:cleanup building:cleanup generated:cleanup",
+		"dependencies:resolve": "yarn install",
+		"dependencies": "run-s dependencies:cleanup dependencies:resolve",
+		"generated:create": "graphql-codegen --config schema/codegen.yml",
+		"generated": "run-s generated:cleanup generated:create",
+		"linting": "eslint \"src/**/*.{ts,js}\" -c ../.eslintrc.js --ignore-path=../.eslintignore --quiet --fix",
+		"prettify": "prettier --write --no-error-on-unmatched-pattern \"src/**/*.{t,j}s\" --config=../.prettierrc.js --ignore-path=../.prettierignore .",
+		"building:create": "tsc",
+		"building": "run-s building:cleanup building:create",
+		"startup": "export $(cat ../.env | grep -v '^#' | xargs) && node ./dist/index.js",
+		"dev": "export $(cat ../.env | grep -v '^#' | xargs) && nodemon"
+	},
+	"devDependencies": {
+		"@graphql-codegen/cli": "^2.16.3",
+		"@graphql-codegen/typescript": "^2.8.7",
+		"@graphql-codegen/typescript-resolvers": "^2.7.12"
+	},
+	"dependencies": {
+		"@graphql-tools/graphql-file-loader": "^7.5.13",
+		"@graphql-tools/load": "^7.8.8",
+		"express": "^4.18.2",
+		"express-graphql": "^0.12.0",
+		"graphql": "^16.6.0"
+	}
+}
