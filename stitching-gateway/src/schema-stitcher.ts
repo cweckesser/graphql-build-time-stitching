@@ -74,15 +74,8 @@ const openAPIBaseUrl = `http://localhost:${openAPIServicePort}`;
 })();
 
 function buildTransforms(integrationType: string): Transform[] {
-	const queryOuterType = 'Query';
-	const mutationOuterType = 'Mutation';
 	return [
-		new WrapType(queryOuterType, `${integrationType}Query`, integrationType),
-		new WrapType(
-			mutationOuterType,
-			`${integrationType}Mutation`,
-			integrationType,
-		),
+		new WrapType('Query', `${integrationType}Query`, integrationType),
 		new RenameTypes(
 			(name) =>
 				`${integrationType}_${

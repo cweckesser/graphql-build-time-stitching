@@ -38,7 +38,6 @@
 		"startup:graphql-service": "cd graphql-service && yarn startup",
 		"startup:open-api-service": "cd open-api-service && yarn startup",
 		"startup:stitching-gateway": "cd stitching-gateway && yarn startup",
-		"startup:stitching-gateway-only": "cd stitching-gateway && yarn startup:initialize-gateway",
 
 		"dev": "run-s -l dev:services dev:stitching-gateway",
 		"dev:services": "run-p -l dev:graphql-service dev:open-api-service",
