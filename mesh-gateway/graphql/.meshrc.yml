@@ -1,0 +1,26 @@
+serve:
+  port: '{env.MESH_GATEWAY_PORT}' # Port can be a numeric value but NOT a reference to an environmental variable!
+sources:
+  - name: People
+    handler:
+      graphql:
+        source: loaders/graphql-service-schema.ts
+    transforms:
+      - encapsulate:
+          name: People
+          applyTo:
+            query: true
+            mutation: true
+            subscription: true
+  - name: Employment
+    handler:
+      openapi:
+        endpoint: http://localhost:{env.OPEN_API_SERVICE_PORT}
+        source: schemas/open-api-service-schema.json
+    transforms:
+      - encapsulate:
+          name: Employment
+          applyTo:
+            query: true
+            mutation: true
+            subscription: true

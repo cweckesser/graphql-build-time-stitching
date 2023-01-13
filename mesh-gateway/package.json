@@ -1,0 +1,35 @@
+{
+	"name": "mesh-gateway",
+	"version": "0.0.1",
+	"description": "Node.js application serving a GraphQL gateway to different downstream APIs",
+	"license": "ISC",
+	"scripts": {
+		"dependencies:cleanup": "rimraf node_modules || rm -rf node_modules",
+		"generated:cleanup": "rimraf src/generated || rm -rf src/generated",
+		"cleanup": "run-p dependencies:cleanup generated:cleanup",
+		"dependencies:resolve": "yarn install",
+		"dependencies": "run-s dependencies:cleanup dependencies:resolve",
+		"generated:create": "export $(cat ../.env | grep -v '^#' | xargs) && mesh build --dir ./graphql",
+		"generated": "run-s generated:cleanup generated:create",
+		"linting": "eslint \"src/**/*.{ts,js}\" -c ../.eslintrc.js --ignore-path=../.eslintignore --quiet --fix",
+		"prettify": "prettier --write --no-error-on-unmatched-pattern \"src/**/*.{t,j}s\" --config=../.prettierrc.js --ignore-path=../.prettierignore .",
+		"startup": "export $(cat ../.env | grep -v '^#' | xargs) && mesh start --dir ./graphql",
+		"dev": "export $(cat ../.env | grep -v '^#' | xargs) && mesh dev --dir ./graphql"
+	},
+	"devDependencies": {
+		"@graphql-mesh/cli": "^0.82.9",
+		"@types/superagent": "^4.1.15"
+	},
+	"dependencies": {
+		"@graphql-mesh/graphql": "^0.33.7",
+		"@graphql-mesh/openapi": "^0.35.6",
+		"@graphql-mesh/transform-encapsulate": "^0.4.5",
+		"@graphql-tools/json-file-loader": "^7.4.15",
+		"@graphql-tools/load": "^7.8.9",
+		"@graphql-tools/utils": "^9.1.4",
+		"@graphql-tools/wrap": "^9.3.0",
+		"graphql": "^16.6.0",
+		"npm-run-all": "^4.1.5",
+		"superagent": "^8.0.6"
+	}
+}

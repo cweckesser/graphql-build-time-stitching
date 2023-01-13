@@ -8,42 +8,48 @@
 		"cleanup:graphql-service": "cd graphql-service && yarn cleanup",
 		"cleanup:open-api-service": "cd open-api-service && yarn cleanup",
 		"cleanup:stitching-gateway": "cd stitching-gateway && yarn cleanup",
+		"cleanup:mesh-gateway": "cd mesh-gateway && yarn cleanup",
 
 		"prettify": "run-s -l prettify:*",
 		"prettify:graphql-service": "cd graphql-service && yarn prettify",
 		"prettify:open-api-service": "cd open-api-service && yarn prettify",
 		"prettify:stitching-gateway": "cd stitching-gateway && yarn prettify",
+		"prettify:mesh-gateway": "cd stitching-gateway && yarn prettify",
 
 		"dependencies": "run-p -l dependencies:*",
 		"dependencies:graphql-service": "cd graphql-service && yarn dependencies",
 		"dependencies:open-api-service": "cd open-api-service && yarn dependencies",
 		"dependencies:stitching-gateway": "cd stitching-gateway && yarn dependencies",
+		"dependencies:mesh-gateway": "cd mesh-gateway && yarn dependencies",
 
 		"generated": "run-p -l generated:*",
 		"generated:graphql-service": "cd graphql-service && yarn generated",
 		"generated:open-api-service": "cd open-api-service && yarn generated",
-		"generated:stitching-gateway": "cd stitching-gateway && yarn generated",
+		"generated:mesh-gateway": "cd mesh-gateway && yarn generated",
 
 		"linting": "run-p -l linting:*",
 		"linting:graphql-service": "cd graphql-service && yarn linting",
 		"linting:open-api-service": "cd open-api-service && yarn linting",
 		"linting:stitching-gateway": "cd stitching-gateway && yarn linting",
+		"linting:mesh-gateway": "cd mesh-gateway && yarn linting",
 
 		"building": "run-p -l building:*",
 		"building:graphql-service": "cd graphql-service && yarn building",
 		"building:open-api-service": "cd open-api-service && yarn building",
 		"building:stitching-gateway": "cd stitching-gateway && yarn building",
 
-		"startup:services": "run-p -l startup:graphql-service startup:open-api-service",
+		"startup:services": "run-p -l startup:*-service",
 		"startup:graphql-service": "cd graphql-service && yarn startup",
 		"startup:open-api-service": "cd open-api-service && yarn startup",
 		"startup:stitching-gateway": "cd stitching-gateway && yarn startup",
+		"startup:mesh-gateway": "cd mesh-gateway && yarn startup",
 
 		"dev": "run-s -l dev:services dev:stitching-gateway",
 		"dev:services": "run-p -l dev:graphql-service dev:open-api-service",
 		"dev:graphql-service": "cd graphql-service && yarn dev",
 		"dev:open-api-service": "cd open-api-service && yarn dev",
-		"dev:stitching-gateway": "cd stitching-gateway && yarn dev"
+		"dev:stitching-gateway": "cd stitching-gateway && yarn dev",
+		"dev:stitching-mesh": "cd stitching-mesh && yarn dev"
 	},
 	"devDependencies": {
 		"@types/express": "^4.17.15",
