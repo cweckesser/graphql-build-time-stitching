@@ -25,11 +25,15 @@ These are the default port values defined in the `.env` file in the main project
 
 **These services need to be up and running for the stitching service to run!**
 
-6. Run the stitching gateway with `yarn startup:stitching-gateway`. The gateway will run at http://localhost:3003/graphql
+6. Run a gateway
+	1. Stitching Gateway: `yarn startup:stitching-gateway` (http://localhost:3003/graphql)
+	1. Mesh Gateway: `yarn startup:mesh-gateway` (http://localhost:400/graphql) (*)
+
+**(*) The Mesh Gateway should be running in the port configured in the `.env` file (3004) but GraphQL Mesh does't seem to correctly pickup the environment variable for the port override.
 
 # Known issues
 
-### Failing queries
+### Failing queries in the Stitching Gateway
 
 When running a query against the gateway:
 
