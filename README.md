@@ -29,7 +29,7 @@ These are the default port values defined in the `.env` file in the main project
 	1. Stitching Gateway: `yarn startup:stitching-gateway` (http://localhost:3003/graphql)
 	1. Mesh Gateway: `yarn startup:mesh-gateway` (http://localhost:400/graphql) (*)
 
-**(*) The Mesh Gateway should be running in the port configured in the `.env` file (3004) but GraphQL Mesh does't seem to correctly pickup the environment variable for the port override.
+(*) The Mesh Gateway should be running in the port configured in the `.env` file (3004) but GraphQL Mesh does't seem to correctly pickup the environment variable for the port override.
 
 # Known issues
 
